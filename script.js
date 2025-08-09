@@ -25,62 +25,27 @@ togglebtn.addEventListener('click', function() {
             btn.textContent = "Read More";
         }
     }
-    document.getElementById('contact-form').addEventListener('submit',function(e){
- e.preventDefault();
- alert("Thank you for reaching out!  I'll get back to you soon." );
- this.reset();
-    });
+   
 
-
-
-
-
-
-/*(function () {
-    emailjs.init("KbnotOfVXjdPIqWFD"); // Your EmailJS user/public key
-})();
-
-document.getElementById('contact-form').addEventListener('submit', function (event) {
+document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
-
-    const templateParams = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        message: document.getElementById("message").value,
-        
-    };
-
-    emailjs.send('service_5xysxol', 'template_mkik6ks', templateParams)
-        .then(() => {
-            alert('Your message has been sent successfully!');
-            document.getElementById('contact-form').reset(); // Reset the form
-        }, (error) => {
-            alert('Failed to send your message. Please try again later.\n' + JSON.stringify(error));
-        });
+    const btn = document.getElementById('button');
+    btn.value = 'Sending...';
+    emailjs.sendForm('service_5xysxol', 'template_mkik6ks', this)
+      .then(() => {
+        btn.value = 'Send Message';
+        alert('Your message has been sent successfully!');
+        this.reset();
+      }, (err) => {
+        btn.value = 'Send Message';
+        alert('Failed to send your message. Please try again later.\n' + JSON.stringify(err));
+      });
 });
-*/
-function SendEmail(){
-		const btn = document.getElementById('button');
 
-	document.getElementById('contact-form')
-	 .addEventListener('submit', function(event) {
-	   event.preventDefault();
 
-	   btn.value = 'Sending...';
 
-	   const serviceID = 'service_5xysxol';
-	   const templateID = 'template_mkik6ks';
-
-	   emailjs.sendForm(serviceID, templateID, this)
-		.then(() => {
-		  btn.value = 'Send Email';
-		  alert('Sent!');
-		}, (err) => {
-		  btn.value = 'Send Email';
-		  alert(JSON.stringify(err));
-		});
-	});
-	}
+    
+	
 
 
 
