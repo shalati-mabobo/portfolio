@@ -62,7 +62,7 @@ document.getElementById('contact-form').addEventListener('submit', function (eve
 function SendEmail(){
 		const btn = document.getElementById('button');
 
-	document.getElementById('form')
+	document.getElementById('contact-form')
 	 .addEventListener('submit', function(event) {
 	   event.preventDefault();
 
@@ -81,6 +81,7 @@ function SendEmail(){
 		});
 	});
 	}
+
 
 
 
