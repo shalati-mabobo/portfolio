@@ -33,23 +33,10 @@ togglebtn.addEventListener('click', function() {
 
 
 
-//     (function(){
-//         emailjs.init("KbnotOfVXjdPIqWFD");
-//     })();
-//     document.getElementById('contact-form').addEventListener('submit', function(event){
-//  event.preventDefault();
-//  emailjs.sendForm('service_5xysxol', 'template_mkik6ks',this)
-//     .then(()=> {
-//         alert('Your message has been sent successfully!');
-//         this.reset();
-//     }, (error) => {
-//         alert('Failed to send your message. Please try again later.\n'+JSON.stringify(error));
-//     });
-//     });
 
 
 
-(function () {
+/*(function () {
     emailjs.init("KbnotOfVXjdPIqWFD"); // Your EmailJS user/public key
 })();
 
@@ -71,5 +58,29 @@ document.getElementById('contact-form').addEventListener('submit', function (eve
             alert('Failed to send your message. Please try again later.\n' + JSON.stringify(error));
         });
 });
+*/
+function SendEmail(){
+		const btn = document.getElementById('button');
+
+	document.getElementById('form')
+	 .addEventListener('submit', function(event) {
+	   event.preventDefault();
+
+	   btn.value = 'Sending...';
+
+	   const serviceID = 'service_5xysxol';
+	   const templateID = 'template_mkik6ks';
+
+	   emailjs.sendForm(serviceID, templateID, this)
+		.then(() => {
+		  btn.value = 'Send Email';
+		  alert('Sent!');
+		}, (err) => {
+		  btn.value = 'Send Email';
+		  alert(JSON.stringify(err));
+		});
+	});
+	}
+
 
 
